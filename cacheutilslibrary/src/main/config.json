@@ -1,0 +1,31 @@
+{
+  "app": {
+    "bundleName": "org.applibgroup.codelabs.myapplication",
+    "vendor": "lifeofcoding",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+    "default": {
+      "network": {
+        "cleartextTraffic": true,
+        "usesClearText": true
+      }
+    }
+  },
+  "module": {
+    "package": "com.lifeofcoding.cacheutlislibrary",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleType": "har",
+      "moduleName": "cacheutilslibrary"
+    }
+  }
+}

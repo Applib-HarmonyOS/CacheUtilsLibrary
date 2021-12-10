@@ -1,11 +1,9 @@
 package com.lifeofcoding.cacheutlislibrary;
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
-
 import com.google.gson.reflect.TypeToken;
 
+import ohos.agp.render.render3d.BuildConfig;
+import ohos.app.Context;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
@@ -30,12 +28,13 @@ public class CacheUtils {
 
     private static final String TAG = "CACHE_UTILS";
 
+    private CacheUtils() {}
     public static void configureCache(Context context) {
-        BASE_CACHE_PATH = context.getApplicationInfo().dataDir + File.separator + "files" + File.separator + "CacheUtils";
+        BASE_CACHE_PATH = context.getApplicationInfo().getEntryDir() + File.separator + "files" + File.separator + "CacheUtils";
 
         if (new File(BASE_CACHE_PATH).mkdirs()) {
             if (BuildConfig.DEBUG)
-                Log.d(TAG, BASE_CACHE_PATH + " created.");
+                LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
         }
     }
 
@@ -52,8 +51,8 @@ public class CacheUtils {
             return GsonHelper.buildGson().fromJson(dataString, listType);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.d(TAG, "failed to read json" + e.toString());
-            return new ArrayList<Map<String, T>>();
+                LogUtil.debug(TAG, "failed to read json" + e.toString());
+            return new ArrayList<>();
         }
     }
 
@@ -62,7 +61,7 @@ public class CacheUtils {
             return GsonHelper.buildGson().toJson(dataMaps);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.d(TAG, "failed to write json" + e.toString());
+                LogUtil.debug(TAG, "failed to write json" + e.toString());
             return "[]";
         }
     }
@@ -76,7 +75,7 @@ public class CacheUtils {
             return IOUtils.toString(new FileInputStream(pathForCacheEntry(fileName)), ENCODING);
         } catch (IOException e) {
             if (BuildConfig.DEBUG)
-                Log.d(TAG, "read cache file failure" + e.toString());
+                LogUtil.debug(TAG, "read cache file failure" + e.toString());
             return null;
         }
     }
@@ -90,7 +89,7 @@ public class CacheUtils {
             IOUtils.write(fileContent, new FileOutputStream(pathForCacheEntry(fileName)), ENCODING);
         } catch (IOException e) {
             if (BuildConfig.DEBUG)
-                Log.d(TAG, "write cache file failure" + e.toString());
+                LogUtil.debug(TAG, "write cache file failure" + e.toString());
         }
     }
 
@@ -115,7 +114,7 @@ public class CacheUtils {
             return GsonHelper.buildGson().fromJson(dataString, t);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.v(TAG, "failed to read json" + e.toString());
+                LogUtil.info(TAG, "failed to read json" + e.toString());
             return null;
         }
     }
@@ -125,7 +124,7 @@ public class CacheUtils {
             return GsonHelper.buildGson().toJson(o);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.v(TAG, "failed to write json" + e.toString());
+                LogUtil.info(TAG, "failed to write json" + e.toString());
             return null;
         }
     }
@@ -157,7 +156,7 @@ public class CacheUtils {
             return GsonHelper.buildGson().fromJson(dataString, t);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.v(TAG, "failed to read json" + e.toString());
+                LogUtil.info(TAG, "failed to read json" + e.toString());
             return new HashMap<String,T>();
         }
     }
@@ -167,7 +166,7 @@ public class CacheUtils {
             return GsonHelper.buildGson().toJson(dataMap);
         } catch (Exception e) {
             if (BuildConfig.DEBUG)
-                Log.v(TAG, "failed to write json" + e.toString());
+                LogUtil.info(TAG, "failed to write json" + e.toString());
             return "{}";
         }
     }

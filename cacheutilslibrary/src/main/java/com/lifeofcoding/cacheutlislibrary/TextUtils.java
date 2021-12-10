@@ -13,20 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lifeofcoding.cacheutilslibrary_sample;
+package com.lifeofcoding.cacheutlislibrary;
 
-import com.lifeofcoding.cacheutlislibrary.CacheUtils;
-import ohos.aafwk.ability.AbilityPackage;
 /**
- * Sample app to test the CacheUtilsLibrary library functionality.
- * Myapplication is the base class which is instantiated before any
- * other class when the process for this package is created
+ * Utility class that contains helper methods for {@code String} manipulation.
  */
-public class MyApplication extends AbilityPackage {
-    @Override
-    public void onInitialize() {
-        super.onInitialize();
-        // configure CacheUtilsLibrary
-        CacheUtils.configureCache(this);
+public class TextUtils {
+    private TextUtils() {}
+
+    /**
+     * Returns true if the string is null or 0-length.
+     *
+     * @param string - the string to be examined
+     * @return true if the string is null or 0-length
+     */
+    public static boolean isEmpty(String string) {
+        if (string == null) {
+            return true;
+        }
+        return string.isEmpty();
     }
 }

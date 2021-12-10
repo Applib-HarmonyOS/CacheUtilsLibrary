@@ -15,18 +15,16 @@
  */
 package com.lifeofcoding.cacheutilslibrary_sample;
 
-import com.lifeofcoding.cacheutlislibrary.CacheUtils;
-import ohos.aafwk.ability.AbilityPackage;
+import com.lifeofcoding.cacheutilslibrary_sample.slice.MainAbilitySlice;
+import ohos.aafwk.ability.Ability;
+import ohos.aafwk.content.Intent;
 /**
- * Sample app to test the CacheUtilsLibrary library functionality.
- * Myapplication is the base class which is instantiated before any
- * other class when the process for this package is created
+ * Main Ability that routes to the required slice.
  */
-public class MyApplication extends AbilityPackage {
+public class MainAbility extends Ability {
     @Override
-    public void onInitialize() {
-        super.onInitialize();
-        // configure CacheUtilsLibrary
-        CacheUtils.configureCache(this);
+    public void onStart(Intent intent) {
+        super.onStart(intent);
+        super.setMainRoute(MainAbilitySlice.class.getName());
     }
 }

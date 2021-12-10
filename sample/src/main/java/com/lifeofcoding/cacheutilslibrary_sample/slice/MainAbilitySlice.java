@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.lifeofcoding.cacheutilslibrary_sample;
+package com.lifeofcoding.cacheutilslibrary_sample.slice;
 
-import com.lifeofcoding.cacheutlislibrary.CacheUtils;
-import ohos.aafwk.ability.AbilityPackage;
+import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.content.Intent;
+import com.lifeofcoding.cacheutilslibrary_sample.ResourceTable;
 /**
- * Sample app to test the CacheUtilsLibrary library functionality.
- * Myapplication is the base class which is instantiated before any
- * other class when the process for this package is created
+ * Sample app to test the CircleProgressBar library functionality.
  */
-public class MyApplication extends AbilityPackage {
+public class MainAbilitySlice extends AbilitySlice {
     @Override
-    public void onInitialize() {
-        super.onInitialize();
-        // configure CacheUtilsLibrary
-        CacheUtils.configureCache(this);
+    public void onStart(Intent intent) {
+        super.onStart(intent);
+        super.setUIContent(ResourceTable.Layout_ability_main);
+    }
+
+    @Override
+    public void onActive() {
+        super.onActive();
+    }
+
+    @Override
+    public void onForeground(Intent intent) {
+        super.onForeground(intent);
     }
 }

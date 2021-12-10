@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "cacheutilssample_MainAbility",
+      "value": "cacheutilssample_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_HelloWorld",
+      "value": "你好，世界"
+    }
+  ]
+}
