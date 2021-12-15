@@ -41,9 +41,8 @@ public class CacheUtils {
                 + File.separator + "files" + File.separator + "CacheUtils";
 
         if (new File(BASE_CACHE_PATH).mkdirs()) {
-            if (BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG)
                 LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
-            }
         }
     }
 
@@ -176,14 +175,17 @@ public class CacheUtils {
         writeFile(fileName, objectToJson(object));
     }
 
-    //    /*
-    //     * @param fileName the name of the file
-    //     * @param t the type of the object you previous stored
-    //     * @return the {@link T} type object you previous stored
-    //     */
-    //    public static <T> T readObjectFile(String fileName, Type t) {
-    //        return objectFromJson(readFile(fileName), t);
-    //    }
+    /**
+     * Method to return the Objects previously stored.
+     *
+     * @param fileName the name of the file
+     * @param t the type of the object you previous stored
+     *
+     * @return the {@link T} type object you previous stored
+     */
+    public static <T> T readObjectFile(String fileName, Type t) {
+        return objectFromJson(readFile(fileName), t);
+    }
 
     private static <T> Map<String, T> dataMapFromJson(String dataString) {
         if (TextUtils.isEmpty(dataString)) {
