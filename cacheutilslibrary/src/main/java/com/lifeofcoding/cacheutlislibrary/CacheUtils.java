@@ -5,7 +5,6 @@ import ohos.agp.render.render3d.BuildConfig;
 import ohos.app.Context;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

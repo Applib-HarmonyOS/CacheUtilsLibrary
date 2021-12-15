@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.lifeofcoding.cacheutilslibrary_sample;
+package com.lifeofcoding.sample;
 
-
-import com.lifeofcoding.cacheutilslibrary_sample.slice.MainAbilitySlice;
 import ohos.aafwk.ability.Ability;
 import ohos.aafwk.content.Intent;
+import com.lifeofcoding.sample.slice.MainAbilitySlice;
+
 
 /**
  * Main Ability that routes to the required slice.

@@ -1,4 +1,4 @@
-//package com.lifeofcoding.cacheutilslibrary_sample;
+//package com.lifeofcoding.sample;
 //
 ///**
 // * Created by Wesley Lin on 9/6/15.

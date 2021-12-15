@@ -9,9 +9,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.lifeofcoding.cacheutilslibrary_sample",
-    "name": "com.lifeofcoding.cacheutilslibrary_sample.MyApplication",
-    "mainAbility": "com.lifeofcoding.cacheutilslibrary_sample.MainAbility",
+    "package": "com.lifeofcoding.sample",
+    "name": "com.lifeofcoding.sample.MyApplication",
+    "mainAbility": "com.lifeofcoding.sample.MainAbility",
     "deviceType": [
       "tv",
       "phone",
@@ -36,7 +36,7 @@
           }
         ],
         "orientation": "unspecified",
-        "name": "com.lifeofcoding.cacheutilslibrary_sample.MainAbility",
+        "name": "com.lifeofcoding.sample.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:cacheutilssample_MainAbility",

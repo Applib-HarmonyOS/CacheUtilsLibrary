@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package com.lifeofcoding.cacheutilslibrary_sample;
+package com.lifeofcoding.sample;
 
-import com.lifeofcoding.cacheutlislibrary.CacheUtils;
 import ohos.aafwk.ability.AbilityPackage;
-
+import com.lifeofcoding.cacheutlislibrary.CacheUtils;
 /**
  * Sample app to test the CacheUtilsLibrary library functionality.
  * Myapplication is the base class which is instantiated before any

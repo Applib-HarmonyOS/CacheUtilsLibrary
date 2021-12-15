@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package com.lifeofcoding.cacheutilslibrary_sample.slice;
+package com.lifeofcoding.sample.slice;
 
-import com.lifeofcoding.cacheutilslibrary_sample.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.agp.render.Paint;
-import ohos.agp.utils.Color;
+import com.lifeofcoding.sample.ResourceTable;
+
 
 /**
  * Sample app to test the CircleProgressBar library functionality.
