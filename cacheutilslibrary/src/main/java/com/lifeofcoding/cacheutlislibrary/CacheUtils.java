@@ -1,7 +1,6 @@
 package com.lifeofcoding.cacheutlislibrary;
 
 import com.google.gson.reflect.TypeToken;
-
 import ohos.agp.render.render3d.BuildConfig;
 import ohos.app.Context;
 import org.apache.commons.io.FileUtils;
@@ -20,53 +19,87 @@ import java.util.Map;
 /**
  * Created by Wesley Lin on 9/5/15.
  */
+
 public class CacheUtils {
 
     private static final String ENCODING = "utf8";
     private static final String FILE_SUFFIX = ".txt";
+    private static final String TAG = "CACHE_UTILS";
+    private static final String FAIL_READ_MSG = "failed to read json";
+    private static final String FAIL_WRITE_MSG = "failed to write json";
     public static String BASE_CACHE_PATH;
 
-    private static final String TAG = "CACHE_UTILS";
+    private CacheUtils() {
+    }
 
-    private CacheUtils() {}
+    /**
+     * Method to configure cache.
+     *
+     * @param context Context instance
+     */
     public static void configureCache(Context context) {
-        BASE_CACHE_PATH = context.getApplicationInfo().getEntryDir() + File.separator + "files" + File.separator + "CacheUtils";
+        BASE_CACHE_PATH = context.getApplicationInfo().getEntryDir()
+                + File.separator + "files" + File.separator + "CacheUtils";
 
         if (new File(BASE_CACHE_PATH).mkdirs()) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
+            }
         }
     }
 
+    /*
+     * Returns path for cache entry
+     * @param name
+     * @return
+     */
     private static String pathForCacheEntry(String name) {
         return BASE_CACHE_PATH + File.separator + name + FILE_SUFFIX;
     }
 
+    /*
+     * Returns List of data from JSON
+     *
+     * @param dataString
+     * @param <T>
+     * @return
+     **/
     private static <T> List<Map<String, T>> dataMapsFromJson(String dataString) {
-        if (TextUtils.isEmpty(dataString))
-            return new ArrayList<Map<String, T>>();
-
+        if (TextUtils.isEmpty(dataString)) {
+            return new ArrayList<>();
+        }
         try {
-            Type listType = new TypeToken<List<Map<String, T>>>(){}.getType();
+            Type listType = new TypeToken<List<Map<String, T>>>() {
+            }.getType();
             return GsonHelper.buildGson().fromJson(dataString, listType);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.debug(TAG, "failed to read json" + e.toString());
+            if (BuildConfig.DEBUG) {
+                LogUtil.debug(TAG, FAIL_READ_MSG + e.toString());
+            }
             return new ArrayList<>();
         }
     }
 
+    /*
+     * Returns JSON from list data
+     * @param dataMaps
+     * @param <T>
+     * @return
+     */
     private static <T> String dataMapstoJson(List<Map<String, T>> dataMaps) {
         try {
             return GsonHelper.buildGson().toJson(dataMaps);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.debug(TAG, "failed to write json" + e.toString());
+            if (BuildConfig.DEBUG) {
+                LogUtil.debug(TAG, FAIL_READ_MSG + e.toString());
+            }
             return "[]";
         }
     }
 
     /**
+     * Method to read file.
+     *
      * @param fileName the name of the file
      * @return the content of the file, null if there is no such file
      */
@@ -74,26 +107,30 @@ public class CacheUtils {
         try {
             return IOUtils.toString(new FileInputStream(pathForCacheEntry(fileName)), ENCODING);
         } catch (IOException e) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 LogUtil.debug(TAG, "read cache file failure" + e.toString());
+            }
             return null;
         }
     }
 
     /**
-     * @param fileName the name of the file
-     * @param fileContent the content of the file
+     * Method to write file content in the specified file.
+     *
+     * @param fileName    the name of the file
+     * @param fileContent you want to store
      */
     public static void writeFile(String fileName, String fileContent) {
         try {
             IOUtils.write(fileContent, new FileOutputStream(pathForCacheEntry(fileName)), ENCODING);
         } catch (IOException e) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 LogUtil.debug(TAG, "write cache file failure" + e.toString());
+            }
         }
     }
 
-    /**
+    /*
      * @param fileName the name of the file
      * @param dataMaps the map list you want to store
      */
@@ -101,7 +138,7 @@ public class CacheUtils {
         writeFile(fileName, dataMapstoJson(dataMaps));
     }
 
-    /**
+    /*
      * @param fileName the name of the file
      * @return the map list you previous stored, an empty {@link List} will be returned if there is no such file
      */
@@ -113,8 +150,9 @@ public class CacheUtils {
         try {
             return GsonHelper.buildGson().fromJson(dataString, t);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.info(TAG, "failed to read json" + e.toString());
+            if (BuildConfig.DEBUG) {
+                LogUtil.info(TAG, FAIL_READ_MSG + e.toString());
+            }
             return null;
         }
     }
@@ -123,13 +161,14 @@ public class CacheUtils {
         try {
             return GsonHelper.buildGson().toJson(o);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.info(TAG, "failed to write json" + e.toString());
+            if (BuildConfig.DEBUG) {
+                LogUtil.info(TAG, FAIL_WRITE_MSG + e.toString());
+            }
             return null;
         }
     }
 
-    /**
+    /*
      * @param fileName the name of the file
      * @param object the object you want to store
      * @param <T> a class extends from {@link Object}
@@ -138,26 +177,28 @@ public class CacheUtils {
         writeFile(fileName, objectToJson(object));
     }
 
-    /**
-     * @param fileName the name of the file
-     * @param t the type of the object you previous stored
-     * @return the {@link T} type object you previous stored
-     */
-    public static <T> T readObjectFile(String fileName, Type t) {
-        return objectFromJson(readFile(fileName), t);
-    }
+    //    /*
+    //     * @param fileName the name of the file
+    //     * @param t the type of the object you previous stored
+    //     * @return the {@link T} type object you previous stored
+    //     */
+    //    public static <T> T readObjectFile(String fileName, Type t) {
+    //        return objectFromJson(readFile(fileName), t);
+    //    }
 
     private static <T> Map<String, T> dataMapFromJson(String dataString) {
-        if (TextUtils.isEmpty(dataString))
-            return new HashMap<String,T>();
-
+        if (TextUtils.isEmpty(dataString)) {
+            return new HashMap<>();
+        }
         try {
-            Type t =  new TypeToken<Map<String, T>>(){}.getType();
+            Type t = new TypeToken<Map<String, T>>() {
+            }.getType();
             return GsonHelper.buildGson().fromJson(dataString, t);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.info(TAG, "failed to read json" + e.toString());
-            return new HashMap<String,T>();
+            if (BuildConfig.DEBUG) {
+                LogUtil.info(TAG, FAIL_READ_MSG + e.toString());
+            }
+            return new HashMap<>();
         }
     }
 
@@ -165,13 +206,14 @@ public class CacheUtils {
         try {
             return GsonHelper.buildGson().toJson(dataMap);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG)
-                LogUtil.info(TAG, "failed to write json" + e.toString());
+            if (BuildConfig.DEBUG) {
+                LogUtil.info(TAG, FAIL_WRITE_MSG + e.toString());
+            }
             return "{}";
         }
     }
 
-    /**
+    /*
      * @param fileName the name of the file
      * @param dataMap the map data you want to store
      */
@@ -179,7 +221,7 @@ public class CacheUtils {
         writeFile(fileName, dataMaptoJson(dataMap));
     }
 
-    /**
+    /*
      * @param fileName the name of the file
      * @return the map data you previous stored
      */
@@ -187,20 +229,20 @@ public class CacheUtils {
         return dataMapFromJson(readFile(fileName));
     }
 
-    /**
+    /*
      * delete the file with fileName
      * @param fileName the name of the file
-     */
+     **/
     public static void deleteFile(String fileName) {
         FileUtils.deleteQuietly(new File(pathForCacheEntry(fileName)));
     }
 
 
-    /**
+    /*
      * check if there is a cache file with fileName
      * @param fileName the name of the file
      * @return true if the file exits, false otherwise
-     */
+     **/
     public static boolean hasCache(String fileName) {
         return new File(pathForCacheEntry(fileName)).exists();
     }

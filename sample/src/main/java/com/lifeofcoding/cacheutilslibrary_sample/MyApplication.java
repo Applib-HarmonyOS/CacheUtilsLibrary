@@ -13,15 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.lifeofcoding.cacheutilslibrary_sample;
 
 import com.lifeofcoding.cacheutlislibrary.CacheUtils;
 import ohos.aafwk.ability.AbilityPackage;
+
 /**
  * Sample app to test the CacheUtilsLibrary library functionality.
  * Myapplication is the base class which is instantiated before any
  * other class when the process for this package is created
  */
+
 public class MyApplication extends AbilityPackage {
     @Override
     public void onInitialize() {

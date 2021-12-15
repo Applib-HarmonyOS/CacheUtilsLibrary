@@ -13,15 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.lifeofcoding.cacheutilslibrary_sample.slice;
 
+import com.lifeofcoding.cacheutilslibrary_sample.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import com.lifeofcoding.cacheutilslibrary_sample.ResourceTable;
+import ohos.agp.render.Paint;
+import ohos.agp.utils.Color;
+
 /**
  * Sample app to test the CircleProgressBar library functionality.
  */
+
 public class MainAbilitySlice extends AbilitySlice {
+
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);

@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.lifeofcoding.cacheutlislibrary;
 
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 
-/**
+/*
  * Utility class for logging
- *
  */
-public class LogUtil {
+class LogUtil {
     private static final String TAG_LOG = "cacheutilslibrary";
 
     private static final int DOMAIN_ID = 0xD000F00;

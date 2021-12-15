@@ -13,14 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.lifeofcoding.cacheutilslibrary_sample;
+
 
 import com.lifeofcoding.cacheutilslibrary_sample.slice.MainAbilitySlice;
 import ohos.aafwk.ability.Ability;
 import ohos.aafwk.content.Intent;
+
 /**
  * Main Ability that routes to the required slice.
  */
+
 public class MainAbility extends Ability {
     @Override
     public void onStart(Intent intent) {
