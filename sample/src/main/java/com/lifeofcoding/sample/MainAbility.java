@@ -20,12 +20,12 @@ import ohos.aafwk.ability.Ability;
 import ohos.aafwk.content.Intent;
 import com.lifeofcoding.sample.slice.MainAbilitySlice;
 
-
 /**
  * Main Ability that routes to the required slice.
  */
 
 public class MainAbility extends Ability {
+
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
