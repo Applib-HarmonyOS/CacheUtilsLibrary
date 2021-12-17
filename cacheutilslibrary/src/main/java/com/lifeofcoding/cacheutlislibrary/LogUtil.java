@@ -22,7 +22,7 @@ import ohos.hiviewdfx.HiLogLabel;
 /*
  * Utility class for logging
  */
-class LogUtil {
+public class LogUtil {
     private static final String TAG_LOG = "cacheutilslibrary";
 
     private static final int DOMAIN_ID = 0xD000F00;

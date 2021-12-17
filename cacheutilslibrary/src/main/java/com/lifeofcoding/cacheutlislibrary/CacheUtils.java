@@ -1,8 +1,6 @@
 package com.lifeofcoding.cacheutlislibrary;
 
 import com.google.gson.reflect.TypeToken;
-import ohos.agp.render.render3d.BuildConfig;
-import ohos.app.Context;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import java.io.File;
@@ -14,7 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import ohos.agp.render.render3d.BuildConfig;
+import ohos.app.Context;
 /**
  * Created by Wesley Lin on 9/5/15.
  */
@@ -37,12 +36,13 @@ public class CacheUtils {
      * @param context Context instance
      */
     public static void configureCache(Context context) {
-        BASE_CACHE_PATH = context.getApplicationInfo().getEntryDir()
+        BASE_CACHE_PATH = context.getCacheDir().getPath()
                 + File.separator + "files" + File.separator + "CacheUtils";
 
         if (new File(BASE_CACHE_PATH).mkdirs()) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
+            }
         }
     }
 
@@ -84,7 +84,7 @@ public class CacheUtils {
      * @param <T>
      * @return
      */
-    private static <T> String dataMapstoJson(List<Map<String, T>> dataMaps) {
+    private static <T> String dataMapsToJson(List<Map<String, T>> dataMaps) {
         try {
             return GsonHelper.buildGson().toJson(dataMaps);
         } catch (Exception e) {
@@ -133,7 +133,7 @@ public class CacheUtils {
      * @param dataMaps the map list you want to store
      */
     public static <T> void writeDataMapsFile(String fileName, List<Map<String, T>> dataMaps) {
-        writeFile(fileName, dataMapstoJson(dataMaps));
+        writeFile(fileName, dataMapsToJson(dataMaps));
     }
 
     /*
@@ -203,7 +203,7 @@ public class CacheUtils {
         }
     }
 
-    private static <T> String dataMaptoJson(Map<String, T> dataMap) {
+    private static <T> String dataMapToJson(Map<String, T> dataMap) {
         try {
             return GsonHelper.buildGson().toJson(dataMap);
         } catch (Exception e) {
@@ -219,7 +219,7 @@ public class CacheUtils {
      * @param dataMap the map data you want to store
      */
     public static <T> void writeDataMapFile(String fileName, Map<String, T> dataMap) {
-        writeFile(fileName, dataMaptoJson(dataMap));
+        writeFile(fileName, dataMapToJson(dataMap));
     }
 
     /*
@@ -237,7 +237,6 @@ public class CacheUtils {
     public static void deleteFile(String fileName) {
         FileUtils.deleteQuietly(new File(pathForCacheEntry(fileName)));
     }
-
 
     /*
      * check if there is a cache file with fileName
