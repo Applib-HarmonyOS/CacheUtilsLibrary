@@ -38,8 +38,10 @@ public class CacheUtils {
     public static void configureCache(Context context) {
         BASE_CACHE_PATH = context.getCacheDir().getPath()
                 + File.separator + "files" + File.separator + "CacheUtils";
+        File fileCacheDir = new File(BASE_CACHE_PATH);
+        boolean cacheDirCreated = fileCacheDir.mkdirs();
 
-        if (new File(BASE_CACHE_PATH).mkdirs()) {
+        if (cacheDirCreated) {
             if (BuildConfig.DEBUG) {
                 LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
             }

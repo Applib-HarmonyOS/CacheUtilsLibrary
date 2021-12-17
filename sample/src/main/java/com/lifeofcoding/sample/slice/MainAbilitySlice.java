@@ -16,8 +16,10 @@
 
 package com.lifeofcoding.sample.slice;
 
-import static com.lifeofcoding.cacheutlislibrary.LogUtil.debug;
 import com.google.gson.reflect.TypeToken;
+import com.lifeofcoding.cacheutlislibrary.CacheUtils;
+import com.lifeofcoding.sample.MyClass;
+import com.lifeofcoding.sample.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.colors.RgbColor;
@@ -31,13 +33,13 @@ import ohos.agp.utils.Color;
 import ohos.agp.utils.LayoutAlignment;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.lifeofcoding.cacheutlislibrary.CacheUtils;
-import com.lifeofcoding.sample.MyClass;
-import com.lifeofcoding.sample.ResourceTable;
+
+import static com.lifeofcoding.cacheutlislibrary.LogUtil.debug;
 
 
 /**
@@ -46,7 +48,9 @@ import com.lifeofcoding.sample.ResourceTable;
 
 public class MainAbilitySlice extends AbilitySlice {
 
-    private final String Tag = MainAbilitySlice.class.getName();
+    private static final String NO_FILE = "No file";
+    private static final String NO_FILE_MAP = "No file or empty map";
+    private final String Tag_Slice = MainAbilitySlice.class.getName();
     private static final String CACHE_FILE_STRING = "cache_file_string";
     private static final String CACHE_FILE_MAP = "cache_file_map";
     private static final String CACHE_FILE_LIST_MAP = "cache_file_list_map";
@@ -79,7 +83,7 @@ public class MainAbilitySlice extends AbilitySlice {
 
 
     private final Component.ClickedListener writeOnClickListener = v -> {
-        debug(Tag, "writeOnClickListener # onClick");
+        debug(Tag_Slice, "writeOnClickListener # onClick");
         if (radioCheckId == ResourceTable.Id_string) {
             CacheUtils.writeFile(CACHE_FILE_STRING, CACHE_FILE_CONTENT_STRING);
             makeToast().setText("Write a String into cache file");
@@ -109,22 +113,22 @@ public class MainAbilitySlice extends AbilitySlice {
             makeToast();
             if (radioCheckId == ResourceTable.Id_string) {
                 String fileContent = CacheUtils.readFile(CACHE_FILE_STRING);
-                makeToast().setText(fileContent == null ? "No file" : fileContent);
+                makeToast().setText(fileContent == null ? NO_FILE : fileContent);
             } else if (radioCheckId == ResourceTable.Id_map) {
                 Map<String, Object> mapData = CacheUtils.readDataMapFile(CACHE_FILE_MAP);
-                makeToast().setText(mapData.isEmpty() ? "No file or empty map" : mapData.toString());
+                makeToast().setText(mapData.isEmpty() ? NO_FILE_MAP : mapData.toString());
             } else if (radioCheckId == ResourceTable.Id_listmap) {
                 List<Map<String, Object>> listMapData = CacheUtils.readDataMapsFile(CACHE_FILE_LIST_MAP);
-                makeToast().setText(listMapData.isEmpty() ? "No file or empty map" : listMapData.toString());
+                makeToast().setText(listMapData.isEmpty() ? NO_FILE_MAP : listMapData.toString());
             } else if (radioCheckId == ResourceTable.Id_object) {
                 MyClass myClassSample = CacheUtils.readObjectFile(CACHE_FILE_OBJECT, new TypeToken<MyClass>() {
                 }.getType());
-                makeToast().setText(myClassSample == null ? "No file" : myClassSample.toString());
+                makeToast().setText(myClassSample == null ? NO_FILE : myClassSample.toString());
             } else if (radioCheckId == ResourceTable.Id_listobject) {
                 List<MyClass> myClassList = CacheUtils.readObjectFile(CACHE_FILE_LIST_OBJECT,
                         new TypeToken<List<MyClass>>() {
                         }.getType());
-                makeToast().setText(myClassList == null ? "No file" : myClassList.toString());
+                makeToast().setText(myClassList == null ? NO_FILE : myClassList.toString());
             }
 
             if (toast != null && null != getTextComponent()) {
