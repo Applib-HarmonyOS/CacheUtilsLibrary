@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import ohos.agp.render.render3d.BuildConfig;
 import ohos.app.Context;
+import ohos.agp.render.render3d.BuildConfig;
+
 /**
  * Created by Wesley Lin on 9/5/15.
  */
@@ -41,10 +42,8 @@ public class CacheUtils {
         File fileCacheDir = new File(BASE_CACHE_PATH);
         boolean cacheDirCreated = fileCacheDir.mkdirs();
 
-        if (cacheDirCreated) {
-            if (BuildConfig.DEBUG) {
-                LogUtil.debug(TAG, BASE_CACHE_PATH + " created.");
-            }
+        if (BuildConfig.DEBUG) {
+            LogUtil.debug(TAG,  cacheDirCreated ? BASE_CACHE_PATH + " created." : BASE_CACHE_PATH + " NOT created.");
         }
     }
 

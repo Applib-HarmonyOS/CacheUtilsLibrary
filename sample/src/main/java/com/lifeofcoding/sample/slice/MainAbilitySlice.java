@@ -33,12 +33,10 @@ import ohos.agp.utils.Color;
 import ohos.agp.utils.LayoutAlignment;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.Context;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static com.lifeofcoding.cacheutlislibrary.LogUtil.debug;
 
 
@@ -50,7 +48,7 @@ public class MainAbilitySlice extends AbilitySlice {
 
     private static final String NO_FILE = "No file";
     private static final String NO_FILE_MAP = "No file or empty map";
-    private final String Tag_Slice = MainAbilitySlice.class.getName();
+    private static final String TAG = MainAbilitySlice.class.getName();
     private static final String CACHE_FILE_STRING = "cache_file_string";
     private static final String CACHE_FILE_MAP = "cache_file_map";
     private static final String CACHE_FILE_LIST_MAP = "cache_file_list_map";
@@ -83,7 +81,7 @@ public class MainAbilitySlice extends AbilitySlice {
 
 
     private final Component.ClickedListener writeOnClickListener = v -> {
-        debug(Tag_Slice, "writeOnClickListener # onClick");
+        debug(TAG, "writeOnClickListener # onClick");
         if (radioCheckId == ResourceTable.Id_string) {
             CacheUtils.writeFile(CACHE_FILE_STRING, CACHE_FILE_CONTENT_STRING);
             makeToast().setText("Write a String into cache file");

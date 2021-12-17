@@ -19,8 +19,8 @@ package com.lifeofcoding.cacheutlislibrary;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 
-/*
- * Utility class for logging
+/**
+ * Utility class for logging.
  */
 public class LogUtil {
     private static final String TAG_LOG = "cacheutilslibrary";
