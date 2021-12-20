@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:root"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:padding="10fp">
+
+    <Text
+        ohos:id="$+id:header"
+        ohos:height="40vp"
+        ohos:width="match_content"
+        ohos:bottom_padding="300fp"
+        ohos:horizontal_center="true"
+        ohos:text="$string:CacheUtils_Demo"
+        ohos:text_alignment="center"
+        ohos:text_size="30fp"
+        ohos:top_margin="20fp"
+        ohos:vertical_center="true"/>
+
+    <DependentLayout
+        xmlns:ohos="http://schemas.huawei.com/res/ohos"
+        ohos:id="$+id:box"
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:alignment="vertical_center"
+        ohos:orientation="vertical"
+        ohos:padding="10fp">
+
+        <Text
+            ohos:id="$+id:text"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:below="$id:header"
+            ohos:text="$string:choose_type"
+            ohos:text_size="15fp"/>
+
+        <RadioContainer
+            ohos:id="$+id:radioGroup"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:below="$id:text"
+            ohos:layout_alignment="left"
+            ohos:layout_direction="ltr"
+            ohos:top_margin="16fp">
+
+            <RadioButton
+                ohos:id="$+id:string"
+                ohos:height="40vp"
+                ohos:width="200vp"
+                ohos:clickable="true"
+                ohos:text="$string:rb_string"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#808080"
+                ohos:text_color_on="#000000"
+                ohos:text_size="20vp"/>
+
+            <RadioButton
+                ohos:id="$+id:map"
+                ohos:height="40vp"
+                ohos:width="200vp"
+                ohos:clickable="true"
+                ohos:text="$string:rb_map"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#808080"
+                ohos:text_color_on="#000000"
+                ohos:text_size="20vp"/>
+
+            <RadioButton
+                ohos:id="$+id:listmap"
+                ohos:height="40vp"
+                ohos:width="200vp"
+                ohos:clickable="true"
+                ohos:text="$string:rb_listmap"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#808080"
+                ohos:text_color_on="#000000"
+                ohos:text_size="20vp"/>
+
+            <RadioButton
+                ohos:id="$+id:object"
+                ohos:height="40vp"
+                ohos:width="200vp"
+                ohos:clickable="true"
+                ohos:text="$string:rb_object"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#808080"
+                ohos:text_color_on="#000000"
+                ohos:text_size="20vp"/>
+
+            <RadioButton
+                ohos:id="$+id:listobject"
+                ohos:height="40vp"
+                ohos:width="200vp"
+                ohos:clickable="true"
+                ohos:text="$string:rb_listobject"
+                ohos:text_alignment="vertical_center"
+                ohos:text_color="#808080"
+                ohos:text_color_on="#000000"
+                ohos:text_size="20vp"/>
+        </RadioContainer>
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:below="$id:radioGroup"
+            ohos:orientation="horizontal"
+            ohos:top_margin="16fp">
+
+            <Button
+                ohos:id="$+id:write"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:background_element="$graphic:background_button"
+                ohos:margin="4fp"
+                ohos:padding="5fp"
+                ohos:text="$string:write"
+                ohos:text_color="#ffffff"
+                ohos:text_weight="700"
+                ohos:weight="1"/>
+
+            <Button
+                ohos:id="$+id:read"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:background_element="$graphic:background_button"
+                ohos:margin="4fp"
+                ohos:padding="5fp"
+                ohos:text="$string:read"
+                ohos:text_color="#ffffff"
+                ohos:text_weight="700"
+                ohos:weight="1"/>
+        </DirectionalLayout>
+
+    </DependentLayout>
+</DependentLayout>
+

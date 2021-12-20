@@ -1,0 +1,52 @@
+{
+  "string": [
+    {
+      "name": "cacheutilssample_MainAbility",
+      "value": "cacheutilssample_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "rb_string",
+      "value": "rb_string"
+    },
+    {
+      "name": "rb_map",
+      "value": "rb_map"
+    },
+    {
+      "name": "rb_listmap",
+      "value": "rb_listmap"
+    },
+    {
+      "name": "rb_object",
+      "value": "rb_object"
+    },
+    {
+      "name": "rb_listobject",
+      "value": "rb_listobject"
+    },
+    {
+      "name": "CacheUtils_Demo",
+      "value": "CacheUtils Demo"
+    },
+    {
+      "name": "choose_type",
+      "value": "Choose the data type you want to write/read"
+    },
+    {
+      "name": "write",
+      "value": "WRITE"
+    },
+    {
+      "name": "read",
+      "value": "READ"
+    }
+  ]
+}
